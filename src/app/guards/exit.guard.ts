@@ -1,0 +1,19 @@
+import { Injectable } from "@angular/core";
+import {
+  ActivatedRouteSnapshot,
+  CanDeactivate,
+  RouterStateSnapshot,
+} from "@angular/router";
+import { CourseComponent } from "../courses/course/course.component";
+
+@Injectable()
+export class ExitGuard implements CanDeactivate<CourseComponent> {
+  canDeactivate(
+    component: CourseComponent,
+    currentRoute: ActivatedRouteSnapshot,
+    currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot
+  ): boolean {
+    return component.confirmExist();
+  }
+}
